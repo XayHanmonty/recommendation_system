@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/workflows
+      - uses: ./.github/actions/setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/1_fp_computing_features.ipynb
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/workflows
+      - uses: ./.github/actions/setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/2_tp_training_retrieval_model.ipynb
@@ -50,7 +50,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/workflows
+      - uses: ./.github/actions/setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/3_tp_training_ranking_model.ipynb
