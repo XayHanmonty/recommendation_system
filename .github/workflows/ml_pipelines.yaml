@@ -3,10 +3,10 @@ name: ML Pipelines
 on:
   # schedule: # Uncomment to run the pipelines every 2 hours. All the pipelines take ~1.5 hours to run.
   #   - cron: '0 */2 * * *'
-  # push: # Uncomment to run pipelines on every new commit to main
-  #   branches:
-  #     - main
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
+   push: # Uncomment to run pipelines on every new commit to main
+     branches:
+       - main
+#  workflow_dispatch:  # Allows manual triggering from GitHub UI
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup
+      - uses: ./.github/workflows
 
       - name: Run pipeline
         run: uv run ipython notebooks/1_fp_computing_features.ipynb
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup
+      - uses: ./.github/workflows
 
       - name: Run pipeline
         run: uv run ipython notebooks/2_tp_training_retrieval_model.ipynb
@@ -50,7 +50,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup
+      - uses: ./.github/workflows
 
       - name: Run pipeline
         run: uv run ipython notebooks/3_tp_training_ranking_model.ipynb
