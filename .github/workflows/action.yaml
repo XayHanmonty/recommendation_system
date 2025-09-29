@@ -15,11 +15,9 @@ runs:
       with:
         version: ${{ inputs.uv-version }}
 
-    - name: Create and activate virtual environment
+    - name: Create virtual environment
       shell: bash
-      run: |
-        uv venv
-        source .venv/bin/activate
+      run: uv venv
 
     - name: Install the project
       shell: bash
